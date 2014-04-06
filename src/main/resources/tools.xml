@@ -1,0 +1,33 @@
+<tools>
+    <tool id="db-mover" title="Database Mover" projectTypes="inventory">
+
+        <description>Generate scripts to copy or move databases from one server to another via backup/restore</description>
+        <parameters>
+
+            <parameter name="p_source_database" title="Source Database"   type="string" required="true" suggestion="project_databases" width="300" />
+
+            <parameter name="p_backup_path"     title="Backup Path"     type="string" required="true"    width="300"  />
+            <parameter name="p_restore_path"    title="Restore Path"     type="string" required="false"  width="300" />
+
+            <parameter name="p_target_server"   title="Target Server"    type="string" required="true" suggestion="project_connections" width="300" />
+            <parameter name="p_target_database" title="Target Database"  type="string" required="true" />
+
+            <parameter name="p_target_data_dir" title="Target Data Path" type="string" required="false"  width="300" />
+            <parameter name="p_target_log_dir"  title="Target Log Path"  type="string" required="false"  width="300" />
+
+            <parameter name="p_source_query"    title="Pre  Processing Query"  type="text" required="false" width="200" height="5" />
+            <parameter name="p_target_query"    title="Post Processing Query"  type="text" required="false" width="200" height="5" />
+
+            <parameter name="p_options"         title="Options"  type="string" required="false" width="200" multiple="true">
+                <values>
+                    <string>Delete Backup File</string>
+                    <string>Script Logins</string>
+                    <string>Make Source DB read-only</string>
+                    <string>Auto Fix Logins</string>
+                </values>
+            </parameter>
+
+        </parameters>
+        <output  script="db_mover.groovy" type="html" />
+    </tool>
+</tools>
